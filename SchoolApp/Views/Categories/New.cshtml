@@ -1,0 +1,19 @@
+﻿@model SchoolApp.Models.Category
+
+<div>
+    @using (Html.BeginForm(actionName: "New", controllerName: "Categories", method: FormMethod.Post))
+    {
+        @Html.LabelFor(c => c.CategoryName, "Numele categoriei: ")
+        <br />
+        @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control"})
+        @Html.ValidationMessageFor(c => c.CategoryName, null,  new {@class = "text-danger"})
+        <br />
+
+        <button class="btn btn-primary" type="submit">
+            Add Category
+        </button>
+
+        <br />
+
+    }
+</div>

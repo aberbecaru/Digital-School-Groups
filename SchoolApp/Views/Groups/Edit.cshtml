@@ -1,0 +1,14 @@
+﻿@model SchoolApp.Models.Group
+
+@using (Html.BeginForm(controllerName: "Groups", actionName: "Edit", method: FormMethod.Post, routeValues: new { id = Model.GroupId }))
+{
+    @Html.Label("GroupName", "Denumire grup")
+        <br />
+    @Html.Editor("GroupName")
+    @Html.ValidationMessageFor(m => m.GroupName, null, new { @class = "text-danger" })
+        <br />
+
+        <button class="btn btn-success" type="submit">
+            Modifica grupul
+        </button>
+}

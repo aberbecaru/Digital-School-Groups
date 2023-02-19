@@ -1,0 +1,17 @@
+﻿@model SchoolApp.Models.Category
+
+
+@using (Html.BeginForm(controllerName: "Categories", actionName: "Edit", method: FormMethod.Post, routeValues: new { id = Model.CategoryId }))
+{
+    @Html.Label("CategoryName", "Denumire categorie")
+    <br />
+    @Html.Editor("CategoryName")
+    @Html.ValidationMessageFor(m => m.CategoryName, null, new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-success" type="submit">
+        Modifica categoria
+    </button>
+}
+
+

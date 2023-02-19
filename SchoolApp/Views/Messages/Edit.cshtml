@@ -1,0 +1,15 @@
+﻿@model SchoolApp.Models.Message
+
+
+@using (Html.BeginForm(controllerName: "Messages", actionName: "Edit", method: FormMethod.Post, routeValues: new { id = Model.MessageId }))
+{
+    @Html.Label("Content", "Noul continut")
+        <br />
+    @Html.Editor("Content")
+    @Html.ValidationMessageFor(m => m.Content, null, new { @class = "text-danger" })
+        <br />
+
+        <button class="btn btn-success" type="submit">
+            Modifica mesajul
+        </button>
+}

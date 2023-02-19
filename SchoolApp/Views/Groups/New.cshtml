@@ -1,0 +1,26 @@
+﻿@model SchoolApp.ViewModels.CreateGroup
+
+
+<div>
+    @using (Html.BeginForm(actionName: "New", controllerName: "Groups", method: FormMethod.Post))
+    {
+        @Html.LabelFor(g => g.group.GroupName, "Numele grupului: ") 
+        <br />
+        @Html.TextBoxFor(g => g.group.GroupName, new { @class = "form-control"})
+        @Html.ValidationMessageFor(g => g.group.GroupName, null,  new {@class = "text-danger"}) 
+        <br />
+
+
+        @Html.LabelFor(g => g.group.CategoryId, "Categoria grupului: ")
+        <br />
+        @Html.DropDownListFor(g => g.group.CategoryId, new SelectList(Model.categories, "CategoryId", "CategoryName"), "Alege categoria", new { @class = "form-control"})
+        @Html.ValidationMessageFor(g => g.group.CategoryId, null,  new {@class = "text-danger"})
+        <br />
+
+        <button class="btn btn-primary" type ="submit" >
+            Add Group
+        </button>
+
+
+    }
+</div>

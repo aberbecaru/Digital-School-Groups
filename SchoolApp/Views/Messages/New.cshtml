@@ -1,0 +1,17 @@
+﻿@model SchoolApp.Models.Message
+<h2 class="text-center mt-5">Add message</h2>  
+<div class="container mt-5">     
+    <div class="row">         
+        <div class="col-6 offset-3">             
+            @using (Html.BeginForm(actionName: "New", controllerName: "Messages",             method: FormMethod.Post,             
+                routeValues: new { id = ViewBag.GroupId })) {                  
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })                  
+                @Html.Label("Content", "Your Message")        <br />                 
+                @Html.TextBox("Content", null, new { @class = "form-control" })                  
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })                
+                 <br />   <br />                  
+                 <button class="btn btn-success" type="submit">Add message</button>             
+            }          
+        </div>     
+    </div>
+</div>

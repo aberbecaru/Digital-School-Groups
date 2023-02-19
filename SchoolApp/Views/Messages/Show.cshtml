@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SchoolApp.Models.Message>
+
+@foreach(Message item in ViewBag.messages) {
+    <div class="row" style="border: 1px solid black">
+         <form method="post" action="/Messages/Delete/@item.MessageId" class="grid-item">
+            <button class="btn btn-outline-danger mx-2" type="submit"><i class="bi bi-trash"></i> Sterge </button>
+        </form>
+        <form method="post" action="/Messages/Edit/@item.MessageId" class="grid-item">
+            <button class="btn btn-outline-danger mx-2" type="submit"><i class="bi bi-trash"></i> Editeaza </button>
+        </form>
+        <h1>
+            @item.Content
+        </h1>
+    </div> 
+}
+

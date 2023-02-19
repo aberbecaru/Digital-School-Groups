@@ -1,0 +1,33 @@
+﻿@model SchoolApp.Models.Group
+<style>
+    .content {
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px 1px #bababa;
+        align-items: center;
+        padding: 1em;
+        background: #ebfaeb;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>
+<div class="content">
+    <a style="margin: 0 auto" class="btn btn-outline-dark" href="/Messages/New/@ViewBag.GroupId">Post Message</a>
+    @foreach (Message item in ViewBag.messages)
+    {
+        <div class="toast show" style="width: 100%; margin: 1em auto">
+            <div class="toast-header">
+                <strong class="me-auto">@item.User.UserName</strong>
+                <div style="display: flex">
+                    <a href="/Messages/Edit/@item.MessageId" class="btn" type="submit"><i class="bi bi-pencil-square"></i></a>
+                    <form method="post" action="/Messages/Delete/@item.MessageId" class="grid-item">
+                        <button class="btn" type="submit"><i class="bi bi-trash"></i> </button>
+                    </form>
+                </div>
+            </div>
+            <div class="toast-body">
+            @item.Content
+            </div>
+        </div>
+    }
+</div>

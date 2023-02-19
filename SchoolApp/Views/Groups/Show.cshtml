@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SchoolApp.Models.UserGroup>
+
+<style>
+    .grid-container {
+        display: flex;
+        padding: 1em;
+        justify-content: center;
+    }
+
+    .grid-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #ebfaeb;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px 1px #bababa;
+        margin: 1em ;
+    }
+</style>
+
+<div class="grid-container">
+    @foreach (var usergroup in Model)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">@usergroup.Group.GroupName - @usergroup.Group.Category.CategoryName</h5>
+
+                    <div class="grid-item">
+                        <a class="btn btn-outline-success mx-2" href="/Groups/Edit/@usergroup.GroupId"><i class="bi bi-eye"></i>Editeaza</a>
+                    </div>
+
+                    <div class="grid-item">
+                        <a class="btn btn-outline-success mx-2" asp-action="ShowGroup" asp-controller="Groups" asp-route-id="@usergroup.GroupId"><i class="bi bi-eye"></i>Go to Group</a>
+                    </div>
+                    <form method="post" action="/Groups/Delete/@usergroup.GroupId" class="grid-item">
+                        <button class="btn btn-outline-danger mx-2" type="submit"><i class="bi bi-trash"></i> Sterge </button>
+                    </form>
+                </div>
+            </div>
+        }
+
+        @if (User.IsInRole("Moderator"))
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">@usergroup.Group.GroupName - @usergroup.Group.Category.CategoryName</h5>
+
+                    <div class="grid-item">
+                        <a class="btn btn-outline-success mx-2" href="/Groups/Edit/@usergroup.GroupId"><i class="bi bi-eye"></i>Editeaza</a>
+                    </div>
+
+                    <div class="grid-item">
+                        <a class="btn btn-outline-success mx-2" asp-action="ShowGroup" asp-controller="Groups" asp-route-id="@usergroup.GroupId"><i class="bi bi-eye"></i>Go to Group</a>
+                    </div>
+                    <form method="post" action="/Groups/Delete/@usergroup.GroupId" class="grid-item">
+                        <button class="btn btn-outline-danger mx-2" type="submit"><i class="bi bi-trash"></i> Sterge </button>
+                    </form>
+                </div>
+            </div>
+        }
+
+        @if (User.IsInRole("User"))
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">@usergroup.Group.GroupName - @usergroup.Group.Category.CategoryName</h5>
+
+
+                    <div class="grid-item">
+                        <a class="btn btn-outline-success mx-2" asp-action="ShowGroup" asp-controller="Groups" asp-route-id="@usergroup.GroupId"><i class="bi bi-eye"></i>Go to Group</a>
+                    </div>
+                    
+                </div>
+            </div>
+
+        }
+    }
+</div> 

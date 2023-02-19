@@ -1,0 +1,16 @@
+﻿@model SchoolApp.Models.Category
+
+@foreach (var category in ViewBag.Categories)
+{
+    <div class="d-flex justify-content-between">
+        <div>
+             <a class="btn btn-outline-success mx-2" href="/Categories/Edit/@category.CategoryId"><i class="bi bi-eye"></i>Editeaza</a>
+        </div>
+        <form method="post" action="/Categories/Delete/@category.CategoryId" style="display: flex; align-times: center; justify-content: center">
+            <button class="btn btn-outline-danger mx-2" type="submit"><i class="bi bi-trash"></i> Sterge </button>
+        </form>
+        <div style="display: block; margin: auto">
+            @category.CategoryName
+        </div>
+    </div>
+}
